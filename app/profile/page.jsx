@@ -41,7 +41,7 @@ const ProfilePage = () => {
 
     const fetchPosts = async () => {
 
-      const res = await fetch(`api/users/${session?.user.id}/posts`, { cache: "no-store", });
+      const res = await fetch(`api/users/${session?.user.id}/posts`,  { next: { revalidate: 0 } },);
       const data = await res.json();
 
       setPosts(data)
