@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders} from 'next-auth/react';
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { useRouter } from "next/navigation";
 
 
 const Nav = () => {
@@ -11,14 +12,22 @@ const Nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false)
+  const router = useRouter();
 
   useEffect(()=>{
+    
     const fetchProviders = async () => {
+
        const response = await getProviders();
        setProviders(response);
        console.log('providers fetched successfully')
+
     };
-    fetchProviders();
+
+    if (providers === null ) {
+      fetchProviders();
+    };
+
   }, []);
 
   return (
@@ -84,7 +93,10 @@ const Nav = () => {
                 <button 
                   type="button" 
                   key={provider.name} 
-                  onClick={() => signIn(provider.id)} 
+                  onClick={() => {
+                    signIn(provider.id);
+                    router.push('/')
+                  }} 
                   className="black_btn"
                 >
                   sign in
