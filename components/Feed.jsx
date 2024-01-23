@@ -32,7 +32,7 @@ const Feed = () => {
     const fetchPosts = async () => {
 
       console.log('sending request to fetch prompts...');
-      const res = await fetch('api/prompt');
+      const res = await fetch('api/prompt', { cache: "no-store" });
       const data = await res.json();
 
       console.log('prompts recieved');
