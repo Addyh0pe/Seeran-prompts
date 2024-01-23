@@ -29,9 +29,7 @@ const CreatePrompt = () => {
           tag: post.tag
         })
 
-        }, 
-        { cache: "no-store" })
-      ;
+      });
 
       if (res.ok){
 

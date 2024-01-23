@@ -10,7 +10,7 @@ export const GET = async (request) => {
         console.log('connected to the database')
 
         console.log('fetching all prompts...')
-        const prompts = await Prompt.find().populate('creator');
+        const prompts = await Prompt.find({}).populate('creator');
 
         console.log('returning all prompts...')
         return new Response(JSON.stringify(prompts), { status : 200 });

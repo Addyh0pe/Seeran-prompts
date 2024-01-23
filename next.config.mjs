@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
+  fetchCache: false,
+
   experimental: {
     serverComponentsExternalPackages: ["mongoose"],
   },
+
   images: {
     remotePatterns: [
       {
@@ -12,6 +16,7 @@ const nextConfig = {
       },
     ],
   },
+  
   webpack(config) {
     config.experiments = {
       ...config.experiments,

@@ -14,7 +14,7 @@ const ProfilePage = () => {
   const router = useRouter();
 
   const handleEdit = (post) => {
-    router.push(`/update-prompt/${post._id}`, { cache: "no-store" })
+    router.push(`/update-prompt/${post._id}`)
   }
 
   const handleDelete = async (post) => {
@@ -41,11 +41,9 @@ const ProfilePage = () => {
 
     const fetchPosts = async () => {
 
-      console.log('sending request to fetch prompts...');
-      const res = await fetch(`api/users/${session?.user.id}/posts`);
+      const res = await fetch(`api/users/${session?.user.id}/posts`, { cache: "no-store", });
       const data = await res.json();
 
-      console.log('prompts recieved');
       setPosts(data)
     };
 
