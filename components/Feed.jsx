@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 
+export const dynamic = 'force-dynamic'
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -37,7 +38,7 @@ const Feed = () => {
       setPosts(data)
     };
 
-    setTimeout(fetchPosts(), 2000);
+    fetchPosts();
 
   }, []);
 
