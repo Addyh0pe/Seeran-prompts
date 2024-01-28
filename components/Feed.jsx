@@ -37,7 +37,7 @@ const Feed = () => {
       setPosts(data)
     };
 
-    setTimeOut(fetchPosts(), 2000);
+    setTimeout(fetchPosts(), 2000);
 
   }, []);
 
