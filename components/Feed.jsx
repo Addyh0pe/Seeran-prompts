@@ -31,13 +31,13 @@ const Feed = () => {
 
     const fetchPosts = async () => {
 
-      const res = await fetch( 'api/prompt', { next: { revalidate: 0 } }, );
+      const res = await fetch( 'api/prompt',   { next: { revalidate: 0 } }, );
       const data = await res.json();
 
       setPosts(data)
     };
 
-    fetchPosts();
+    setTimeOut(fetchPosts(), 2000);
 
   }, []);
 
