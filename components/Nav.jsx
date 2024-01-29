@@ -20,11 +20,10 @@ const Nav = () => {
 
        const response = await getProviders();
        setProviders(response);
-       console.log('providers fetched successfully')
 
     };
 
-    if (providers === null ) {
+    if ( providers === null ) {
       fetchProviders();
     };
 

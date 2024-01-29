@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 
 
@@ -18,48 +15,23 @@ const PromptCardList = ({ data, handleTagClick }) => {
   )
 }
 
-const Feed = () => {
-
-  const [searchText, setsearchText] = useState('');
-  const [posts, setPosts] = useState([]);
-
-  const handleSearchChange = (event) => {
-
-  };
-
-  useEffect(() => {
-
-    const fetchPosts = async () => {
-
-      const res = await fetch( 'api/prompt', { next: { revalidate: 0 } }, );
-      const data = await res.json();
-
-      setPosts(data)
-    };
-
-    fetchPosts();
-
-  }, []);
-
+const Feed = ({ posts }) => {
+  
   return (
     <section className="feed">
       <form className="relative w-full flex-center">
         <input
           type="text"
           placeholder="search"
-          value={searchText}
-          onChange={handleSearchChange}
           required
           className="search_input peer"
         />
       </form>
       <PromptCardList
         data={posts}
-        handleTagClick={() => {}}
       />
     </section>
   )
-
 }
 
 export default Feed;

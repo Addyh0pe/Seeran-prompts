@@ -1,6 +1,15 @@
 import Feed from "@components/Feed";
 
-const Home = () => {
+
+const Home = async () => {
+
+  let posts = []
+  
+  const res = await fetch( 'http://seeran-prompts.vercel.app/api/prompt', { next: { revalidate: 0 } }, );
+  const data = await res.json();
+
+  posts = data
+
   return (
     <section className="w-full flex-center flex-col">
 
@@ -15,7 +24,7 @@ const Home = () => {
             create and share creative prompts
         </p>
 
-        <Feed/>
+        <Feed posts={posts}/>
 
     </section>
   )

@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 
-  fetchCache: false,
-
   experimental: {
     serverComponentsExternalPackages: ["mongoose"],
   },
