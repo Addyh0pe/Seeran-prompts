@@ -1,8 +1,8 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 import { useRouter } from "next/navigation";
 
@@ -14,7 +14,7 @@ const Nav = () => {
   const [toggleDropDown, setToggleDropDown] = useState(false)
   const router = useRouter();
 
-  useEffect(()=>{
+  useEffect(() => {
     
     const fetchProviders = async () => {
 
@@ -38,7 +38,7 @@ const Nav = () => {
 
       {/* mobile navigation */}
       <div className="sm:hidden flex relative">
-        {session?.user ? (
+        { session?.user ? (
           <div className="flex">
             <Image 
               src={session?.user.image} 

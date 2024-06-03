@@ -1,27 +1,14 @@
-'use client'
-
-import { useEffect, useState } from "react";
-
 import Feed from "@components/Feed";
 
 
 const Home = async () => {
 
-  const [posts, setPosts] = useState([])
+  let posts = []
+  
+  const res = await fetch( 'http://seeran-prompts.vercel.app/api/prompt', { next: { revalidate: 60 } }, );
+  const data = await res.json();
 
-  useEffect(() => {
-
-    const getPosts = async () =>  {
-    
-      const res = await fetch( 'http://seeran-prompts.vercel.app/api/prompt');
-      const data = await res.json();
-
-      setPosts(data);
-    }
-
-    getPosts()
-
-  }, [])
+  posts = data
 
   return (
     <section className="w-full flex-center flex-col">
