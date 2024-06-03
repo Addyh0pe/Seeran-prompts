@@ -11,10 +11,15 @@ const Home = async () => {
 
   useEffect(() => {
 
-    const res = await fetch( 'http://seeran-prompts.vercel.app/api/prompt' );
-    const data = await res.json();
+    const getPosts = async () =>  {
+    
+      const res = await fetch( 'http://seeran-prompts.vercel.app/api/prompt');
+      const data = await res.json();
 
-    setPosts(data)
+      setPosts(data);
+    }
+
+    getPosts()
 
   }, [])
 
